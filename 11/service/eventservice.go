@@ -73,9 +73,9 @@ func (s *EventService) UserEventsInRange(userId int, start, end time.Time) ([]do
 		return res, errors.New("current user doesn't exist")
 	}
 
-	for i := range userEvents {
-		if userEvents[i].Date.After(start) && userEvents[i].Date.Before(end) {
-			res = append(res, userEvents[i])
+	for _, v := range userEvents {
+		if v.Date.After(start) && v.Date.Before(end) {
+			res = append(res, v)
 		}
 	}
 	return res, nil
